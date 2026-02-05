@@ -34,12 +34,12 @@
 ## 二、数据集链接与说明  
 ### 2.1 自建数据集（番茄叶绿素SPAD值时间序列）  
 - **文件**：`tomato_spad_time_series.zip`  
-- **链接**：[百度网盘](https://pan.baidu.com/s/14VPUKSaqGEEEFy4Fxbk2Bw?pwd=8dd5) 提取码: 8dd5  
+- **链接**：[百度网盘](https://pan.baidu.com/s/1K9Pj_A1YMlCiluWfhhQGvA?pwd=uasm) 提取码: uasm  
 - **内容**：包含CSV格式数据文件，记录番茄植株在90天内的SPAD值时间序列，含样本元数据（植株编号、叶片位置、采样时间等）。  
 
 ### 2.2 公共数据集（引用参考）
 - **文件**：`公共数据集.zip`  
-- **链接**：[百度网盘](https://pan.baidu.com/s/1sFwbEk-EIwOk9td9JOar-g?pwd=fvh5 提取码: fvh5)    
+- **链接**：[百度网盘](https://pan.baidu.com/s/1N7rPSpunJQIr2cRWxxqsLg?pwd=3dhd) 提取码: 3dhd)    
 - **链接**：[Google Drive](https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy)   
 以下为多领域时间序列数据集，供对比分析参考：  
 - **Weather3**：德国21项气象指标（湿度、气温等），[链接](https://www.bgc-jena.mpg.de/wetter/)  

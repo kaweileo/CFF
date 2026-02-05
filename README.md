@@ -33,7 +33,7 @@
 
 ## 二、数据集链接与说明  
 ### 2.1 自建数据集（番茄叶绿素SPAD值时间序列）  
-- **文件**：`tomato_spad_time_series.zip`  
+- **文件**：`tomato_plus_8H.zip`  
 - **链接**：[百度网盘](https://pan.baidu.com/s/1K9Pj_A1YMlCiluWfhhQGvA?pwd=uasm) 提取码: uasm  
 - **内容**：包含CSV格式数据文件，记录番茄植株在90天内的SPAD值时间序列，含样本元数据（植株编号、叶片位置、采样时间等）。  
 

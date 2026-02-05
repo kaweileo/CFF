@@ -1,84 +1,85 @@
+**Read this in other languages: [English](README.md), [中文](README_zh.md).**
+
 # CFF
 
-# 番茄叶片叶绿素SPAD值时间序列数据集
-**基于研究生毕业论文数据开源（仅保留叶绿素SPAD值时间序列相关内容）**  
-**注**：本数据集仅包含叶绿素SPAD值时间序列，由魏凯斌教授团队提供，甘肃省自然科学基金资助。使用时请遵守MIT协议，禁止未经授权的商业用途。
+# Tomato Leaf Chlorophyll SPAD Value Time Series Dataset
+Open Sourced Based on Postgraduate Thesis Data (Only Chlorophyll SPAD Value Time Series-Related Content Retained)
+> Note: This dataset only contains chlorophyll SPAD value time series, provided by the research team of Professor Kaibin Wei and funded by the Gansu Provincial Natural Science Foundation. Users shall abide by the MIT License and unauthorized commercial use is prohibited.
 
-## 一、数据集构建背景与方法  
-### 1.1 番茄生长周期特性分析  
-番茄生长周期分为种子萌发、幼苗生长、营养生长、开花、果实膨大和成熟等阶段。本研究聚焦于不同生长阶段叶片叶绿素含量（以SPAD值表征）的动态变化，揭示其与生长调控、胁迫响应的关联机制，为设施农业精准管理提供数据支撑。  
+## I. Dataset Construction Background and Methods
+### 1.1 Analysis of Tomato Growth Cycle Characteristics
+The tomato growth cycle is divided into seed germination, seedling growth, vegetative growth, flowering, fruit expansion, ripening and other stages. This study focuses on the dynamic changes of leaf chlorophyll content (characterized by SPAD values) at different growth stages, reveals its correlation mechanism with growth regulation and stress response, and provides data support for the precise management of protected agriculture.
 
-### 1.2 实验设计与材料准备  
-- **实验材料**：以“粉红冠”番茄为研究对象，该品种叶片厚、生长稳定、叶绿素含量恒定，优于草莓番茄等其他品种。  
-- **仪器设备**：采用IN-YL01叶绿素分析仪测量SPAD值，精度为±2 SPAD单位（0-250范围），定期校准确保数据可靠性。  
-- **种植条件**：盆栽模式，每盆1株，控制种植密度以优化通风透光；采用复合微生物肥料，结合灌溉、遮阳、防风措施维持稳定生长环境。  
+### 1.2 Experimental Design and Material Preparation
+- **Experimental Materials**: The tomato cultivar *Fenhongguan* was selected as the research object. This cultivar has the advantages of thick leaves, stable growth and constant chlorophyll content, which is superior to other cultivars such as strawberry tomato.
+- **Instruments and Equipment**: The IN-YL01 Chlorophyll Analyzer was used to measure SPAD values, with an accuracy of ±2 SPAD units (range: 0-250). Regular calibration was conducted to ensure data reliability.
+- **Cultivation Conditions**: Pot cultivation mode was adopted with one plant per pot, and the planting density was controlled to optimize ventilation and light transmission. A compound microbial fertilizer was applied, and stable growth environment was maintained in combination with irrigation, shading and wind protection measures.
 
-### 1.3 数据采集方法与流程  
-- **采样方案**：  
-  - **样本量**：20株×2叶×90天=3600样本，每日09:00-11:00采样（避开光合作用波动峰值）。  
-  - **空间定位**：选取主茎3-5节位成熟功能叶，避免幼叶与老叶干扰。  
-  - **测量重复**：每叶片三点采样（距叶脉5±0.5 mm），重复3次，控制变异系数（CV）<5%。  
-- **标准化流程**：采用基线校正法消除环境波动影响，公式为：  
-  \[
-  \text{标准化SPAD值} = \frac{\text{实测值} - \text{对照组当日均值}}{\text{对照组当日标准差}}
-  \]  
-  经质量控制后保留有效样本3199个。  
+### 1.3 Data Collection Methods and Procedures
+#### Sampling Protocol
+- Sample size: 20 plants × 2 leaves × 90 days = 3,600 samples. Sampling was conducted daily from 09:00 to 11:00 (avoiding the peak of photosynthetic fluctuation).
+- Spatial positioning: Mature functional leaves at the 3rd to 5th nodes of the main stem were selected to avoid interference from young leaves and senescent leaves.
+- Measurement replication: Three sampling points were set on each leaf (5±0.5 mm from the leaf vein) with three replications, and the coefficient of variation (CV) was controlled to be less than 5%.
+- Standardized procedure: The baseline correction method was adopted to eliminate the influence of environmental fluctuations, with the formula as follows:
+$$\text{Standardized SPAD Value} = \frac{\text{Measured Value} - \text{Daily Mean of Control Group}}{\text{Daily Standard Deviation of Control Group}}$$
+A total of 3,199 valid samples were retained after quality control.
 
-### 1.4 数据处理与数据集构建  
-- **异常数据处理**：  
-  - 相邻测量值差异率＞15%时启动复核流程，缺失值采用相邻植株均值插补或剔除整行。  
-  - 采用均值-极差控制图（如编号9、11植株）监控数据稳定性。  
-- **数据集构成**：包含20株×2叶×3测量位点（叶尖/叶中/叶基）×30天的时空序列数据，字段包括植株编号、叶片位置、测量时间、SPAD值等。  
+### 1.4 Data Processing and Dataset Construction
+#### Abnormal data processing
+- A review process was initiated when the difference rate of adjacent measured values exceeded 15%. Missing values were supplemented by mean imputation of adjacent plants or eliminated by row deletion.
+- The Mean-Range Control Chart was used to monitor data stability (e.g., Plant No.9 and No.11).
+#### Dataset composition
+The dataset contains spatiotemporal series data of 20 plants × 2 leaves × 3 measurement sites (leaf apex/leaf middle/leaf base) over 30 days, with fields including Plant ID, Leaf Position, Measurement Time, SPAD Value and so on.
 
+## II. Dataset Links and Descriptions
+### 2.1 Self-Constructed Dataset (Tomato Chlorophyll SPAD Value Time Series)
+- File: tomato_plus_8H.zip
+- Link: [Baidu Netdisk](https://pan.baidu.com/s/1K9Pj_A1YMlCiluWfhhQGvA?pwd=uasm)
+- Extraction Code: uasm
+- Content: Contains a CSV format data file recording the SPAD value time series of tomato plants over 90 days, including sample metadata (Plant ID, Leaf Position, Sampling Time, etc.).
 
-## 二、数据集链接与说明  
-### 2.1 自建数据集（番茄叶绿素SPAD值时间序列）  
-- **文件**：`tomato_plus_8H.zip`  
-- **链接**：[百度网盘](https://pan.baidu.com/s/1K9Pj_A1YMlCiluWfhhQGvA?pwd=uasm) 提取码: uasm  
-- **内容**：包含CSV格式数据文件，记录番茄植株在90天内的SPAD值时间序列，含样本元数据（植株编号、叶片位置、采样时间等）。  
+### 2.2 Public Datasets (Cited for Reference)
+- File: Public Datasets.zip
+- Link: [Baidu Netdisk]((https://pan.baidu.com/s/1N7rPSpunJQIr2cRWxxqsLg?pwd=3dhd)
+- Extraction Code: 3dhd
+- Link: [Google Drive](https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy)
 
-### 2.2 公共数据集（引用参考）
-- **文件**：`公共数据集.zip`  
-- **链接**：[百度网盘](https://pan.baidu.com/s/1N7rPSpunJQIr2cRWxxqsLg?pwd=3dhd) 提取码: 3dhd)    
-- **链接**：[Google Drive](https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy)   
-以下为多领域时间序列数据集，供对比分析参考：  
-- **Weather3**：德国21项气象指标（湿度、气温等），[链接](https://www.bgc-jena.mpg.de/wetter/)  
-- **Traffic4**：旧金山高速公路传感器记录的道路占用率，[链接](https://pems.dot.ca.gov/)  
-- **Electricity5**：321户家庭每小时电力消耗，[UCI数据集](https://archive.ics.uci.edu/ml/datasets/ElectricityLoadDiagrams20112014)  
-- **ILI6**：每周流感样病例数及比例，[CDC数据平台](https://gis.cdc.gov/grasp/fluview/fluportaldashboard.html)  
-- **ETT7**：电力变压器温度数据集，[GitHub仓库](https://github.com/zhouhaoyi/ETDataset)  
-- **Exchange-rate8**：8国货币日汇率（谨慎用于预测基准），[GitHub仓库](https://github.com/laiguokun/multivariate-time-series-data)  
+The following multi-domain time series datasets are provided for comparative analysis:
+- Weather3: 21 meteorological indicators (humidity, air temperature, etc.) in Germany, [Link](https://www.bgc-jena.mpg.de/wetter/)
+- Traffic4: Road occupancy rate recorded by highway sensors in San Francisco, [Link](https://pems.dot.ca.gov/)
+- Electricity5: Hourly electricity consumption of 321 households, [UCI Dataset](https://archive.ics.uci.edu/ml/datasets/ElectricityLoadDiagrams20112014)
+- ILI6: Weekly number and proportion of influenza-like illness (ILI) cases, [CDC Data Platform](https://gis.cdc.gov/grasp/fluview/fluportaldashboard.html)
+- ETT7: Power Transformer Temperature Dataset, [GitHub Repository](https://github.com/zhouhaoyi/ETDataset)
+- Exchange-rate8: Daily exchange rates of 8 national currencies (use cautiously as a prediction benchmark), [GitHub Repository](https://github.com/laiguokun/multivariate-time-series-data)
 
-
-## 三、致谢与支持  
-### 3.1 贡献者  
-特别感谢以下人员的技术支持：  
-- **@魏凯斌教授（导师）** —— 研究指导与资源支持  
+## III. Acknowledgements and Support
+### 3.1 Contributors
+Special thanks to the following individuals for their technical support:
+- @Professor Kaibin Wei (Supervisor) — Research guidance and resource support
 - **@zhangyunjin488**
 - **@jjqbxm**
 - **@gqzszzy**
 - **@Precious375**
 - **@STTT1248**
 
-### 3.2 基金与合作  
-- **基金资助**：甘肃省自然科学基金  
-- **合作单位**：天水师范学院、西北师范大学
+### 3.2 Funding and Cooperation
+- Funding Support: Gansu Provincial Natural Science Foundation
+- Cooperating Institutions: Tianshui Normal University, Northwest Normal University
 
+## IV. Open Source License and Citation
+### 4.1 License Agreement
+This dataset is licensed under the MIT License, which permits academic research and non-commercial use on the condition that the original attribution and citation are retained.
 
-## 四、开源协议与引用  
-### 4.1 授权协议  
-本数据集采用 **MIT License**，允许学术研究与非商业用途，需保留原始署名及引用。  
-
-### 4.2 引用格式  
-```bibtex  
+### 4.2 Citation Format
+```bibtex
 @dataset{tomato_leaf_image_dataset,  
-  title={番茄叶片叶绿素SPAD值时间序列数据集},  
+  title={Tomato Leaf Chlorophyll SPAD Value Time Series Dataset},  
   author={kaweileo},  
   year={2025},  
-  url={https://https://github.com/kaweileo/CFF}  
-}  
-```  
+  url={https://github.com/kaweileo/CFF}  
+}
+```
+> Note: The duplicate `https://` in the original URL has been corrected to comply with URI specifications.
 
-
-## 五、联系方式  
-如需技术支持或数据引用授权，请通过GitHub Issue联系
+## V. Contact Information
+For technical support or authorization for data citation, please contact us via GitHub Issue.

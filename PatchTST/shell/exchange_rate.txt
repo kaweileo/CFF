@@ -1,0 +1,125 @@
+
+#!/bin/bash
+
+# 检查并创建日志目录
+if [ ! -d "./logs" ]; then
+    mkdir ./logs
+fi
+
+if [ ! -d "./logs/LongForecasting" ]; then
+    mkdir ./logs/LongForecasting
+fi
+
+# 定义变量
+seq_len=336
+model_name=PatchTST
+root_path_name=./dataset/
+data_path_name=exchange_rate.csv
+model_id_name=exchange_rate
+data_name=custom
+random_seed=2024
+
+# 遍历不同的预测长度
+for pred_len in 96 192 336 720;
+do
+    python -u run_longExp.py \
+      --is_training 1 \
+      --root_path ${root_path_name} \
+      --data_path ${data_path_name} \
+      --model_id ${model_id_name}_${seq_len}_${pred_len} \
+      --model ${model_name} \
+      --data ${data_name} \
+      --features M \
+      --seq_len ${seq_len} \
+      --pred_len ${pred_len} \
+      --enc_in 8 \
+      --des 'Exp' \
+      --itr 1 \
+      --batch_size 8 \
+      --learning_rate 0.0005 \
+      --random_seed ${random_seed} \
+    | tee logs/LongForecasting/${model_name}_${model_id_name}_${seq_len}_${pred_len}.log
+done
+
+
+#!/bin/bash
+
+# 设置严格模式，确保脚本在遇到错误时立即退出，并检查未设置的变量
+set -euo pipefail
+
+# 定义日志目录路径
+LOG_DIR="./logs"
+LONG_FORECASTING_LOG_DIR="${LOG_DIR}/LongForecasting"
+
+# 检查并创建日志目录
+create_log_directories() {
+    if [ ! -d "${LOG_DIR}" ]; then
+        mkdir "${LOG_DIR}"
+        echo "Created directory: ${LOG_DIR}"
+    fi
+
+    if [ ! -d "${LONG_FORECASTING_LOG_DIR}" ]; then
+        mkdir "${LONG_FORECASTING_LOG_DIR}"
+        echo "Created directory: ${LONG_FORECASTING_LOG_DIR}"
+    fi
+}
+
+# 定义模型训练参数
+define_model_parameters() {
+    local seq_len=336
+    local model_name="PatchTST"
+    local root_path_name="./dataset/"
+    local data_path_name="exchange_rate.csv"
+    local model_id_name="exchange_rate"
+    local data_name="custom"
+    local random_seed=2024
+
+    # 返回定义的参数
+    echo "${seq_len} ${model_name} ${root_path_name} ${data_path_name} ${model_id_name} ${data_name} ${random_seed}"
+}
+
+# 执行模型训练
+train_model() {
+    local seq_len=$1
+    local model_name=$2
+    local root_path_name=$3
+    local data_path_name=$4
+    local model_id_name=$5
+    local data_name=$6
+    local random_seed=$7
+
+    for pred_len in 96 192 336 720; do
+        local log_file="${LONG_FORECASTING_LOG_DIR}/${model_name}_${model_id_name}_${seq_len}_${pred_len}.log"
+        echo "Starting training for pred_len=${pred_len}, log will be saved to ${log_file}"
+
+        python -u run_longExp.py \
+          --is_training 1 \
+          --root_path "${root_path_name}" \
+          --data_path "${data_path_name}" \
+          --model_id "${model_id_name}_${seq_len}_${pred_len}" \
+          --model "${model_name}" \
+          --data "${data_name}" \
+          --features M \
+          --seq_len "${seq_len}" \
+          --pred_len "${pred_len}" \
+          --enc_in 8 \
+          --des 'Exp' \
+          --itr 1 \
+          --batch_size 8 \
+          --learning_rate 0.0005 \
+          --random_seed "${random_seed}" \
+        2>&1 | tee -a "${log_file}"
+
+        echo "Training completed for pred_len=${pred_len}"
+    done
+}
+
+# 主程序入口
+main() {
+    create_log_directories
+    read -r seq_len model_name root_path_name data_path_name model_id_name data_name random_seed < <(define_model_parameters)
+    train_model "${seq_len}" "${model_name}" "${root_path_name}" "${data_path_name}" "${model_id_name}" "${data_name}" "${random_seed}"
+}
+
+# 执行主程序
+main
